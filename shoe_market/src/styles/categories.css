@@ -1,0 +1,27 @@
+.categories {
+  text-align: center;
+  padding: 60px;
+  background-color: #b8cbd0;
+}
+
+.category-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.category-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+}

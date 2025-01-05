@@ -1,0 +1,33 @@
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-info .card-text {
+  text-align: center;
+}
+
+.product-info button {
+  padding: 10px 15px;
+  background-color: #137c8b;
+  border: none;
+}
+
+.product-info button:hover,
+.product-info button:focus {
+  background-color: #0f626f;
+  border: none;
+}
+
+.product-info .card-title,
+.product-info .price {
+  font-weight: bolder;
+  color: #344d59;
+  font-size: 2vh;
+}
+
+.product-info .category {
+  color: #7a90a4;
+  font-size: 1.7vh;
+}

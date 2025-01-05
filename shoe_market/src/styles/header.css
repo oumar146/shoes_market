@@ -1,0 +1,101 @@
+/* Styles pour le conteneur principal */
+.container-fluid {
+  background-color: #344d59;
+  color: white;
+  padding: 20px 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour la barre de navigation */
+.navbar {
+  padding: 0;
+  border-radius: 0;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.navbar-brand span {
+  color: #137c8b;
+}
+
+/* Styles pour le menu déroulant */
+.dropdown-toggle:focus,
+.dropdown-toggle:hover {
+  background-color: transparent;
+}
+
+.navbar-toggler {
+  background-color: #b8cbd0;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+  background-color: #b8cbd0;
+}
+
+.dropdown-menu {
+  background-color: #b8cbd0;
+  color: #344d59;
+  max-width: 100%;
+}
+
+.dropdown-item:hover {
+  background-color: #b8cbd0;
+  text-decoration: underline;
+}
+
+/* Styles pour le corps du menu dépliant */
+
+.offcanvas-header,
+.offcanvas-body {
+  display: flex;
+  justify-content: flex-end;
+  color: #b8cbd0;
+  background-color: #344d59;
+  font-size: 2.2vh;
+}
+
+.offcanvas-body .nav-link {
+  display: flex;
+  justify-content: flex-end;
+  color: #b8cbd0;
+}
+
+.offcanvas-body .nav-link:hover,
+.offcanvas-body .nav-link:focus {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Styles pour les liens de navigation */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+  cursor: pointer;
+  padding: 0;
+  color: #b8cbd0;
+}
+
+.nav-links li {
+  text-decoration: none;
+  font-size: 16px;
+  padding: 0 10px;
+}
+
+.nav-links li:hover {
+  text-decoration: underline;
+  color: white;
+}
