@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./components/UserContext";
 
 // Import des pages
@@ -28,7 +28,7 @@ const routes = [
 const Router = () => {
   return (
     <UserProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* Routes publiques accessibles sans être connecté */}
           <Route path="/login" element={<Login />} />
@@ -43,7 +43,7 @@ const Router = () => {
             />
           ))}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </UserProvider>
   );
 };
