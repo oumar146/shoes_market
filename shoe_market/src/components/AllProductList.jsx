@@ -34,7 +34,7 @@ const AllProductList = ({ input }) => {
     setProductFilter(
       // filtrer les offres
       products.filter((product) => {
-        const matchesUserFilter = user.id ? product.creator_id !== user.id : true;
+        const matchesUserFilter = user ? product.creator_id !== user.id : true;
         const matchesInputFilter =
           product.name.toLowerCase().includes(input.toLowerCase()) ||
           product.description.toLowerCase().includes(input.toLowerCase());
