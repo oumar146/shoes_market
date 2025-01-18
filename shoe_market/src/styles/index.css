@@ -9,3 +9,17 @@ body {
 .error {
   color: rgb(235, 80, 80);
 }
+
+.logo {
+  color: #0b162c;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+.hover-bg-whitesmoke:hover {
+  background-color: black;
+  color: whitesmoke;
+}

@@ -59,11 +59,11 @@ const TokenChecker = () => {
   // Gestion des redirections lorsque la session expire
   const handleRedirectHome = () => {
     setShowModal(false);
-    navigate("/home");
+    navigate("/#/home");
   };
   const handleRedirectLogin = () => {
     setShowModal(false);
-    navigate("/login");
+    navigate("/#/login");
   };
 
   return (

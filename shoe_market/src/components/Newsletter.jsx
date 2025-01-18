@@ -18,7 +18,7 @@ const Newsletter = () => {
 
   return (
     <div className="newsletter-container">
-      <h2 className="newsletter-title">Restez informé de nos dernières nouveautés</h2>
+      <h2 className="title">Restez informé de nos dernières nouveautés</h2>
       <p className="newsletter-subtitle">
         Inscrivez-vous à notre newsletter pour recevoir les dernières actualités et offres exclusives.
       </p>

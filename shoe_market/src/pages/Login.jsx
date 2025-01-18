@@ -44,7 +44,7 @@ const Login = () => {
       const token = await login(email, password, setError, updateUser);
 
       if (token) {
-        navigate("/home");
+        navigate("/#/home");
       }
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
@@ -52,43 +52,45 @@ const Login = () => {
   };
 
   return (
-    <main className="login-container">
-      <div className="login-box">
-        <h2>Connexion à votre compte</h2>
-        {!error && (
-          <p>Entrez votre email et votre mot de passe pour vous connecter</p>
-        )}
-        {error && <p className="error">{error}</p>}
-        <div className="input-group">
-          <label htmlFor="yourEmail">Email</label>
-          <input
-            type="email"
-            id="yourEmail"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+  
+      <div className="login-container">
+        <div className="login-box">
+          <h2>Connexion à votre compte</h2>
+          {!error && (
+            <p>Entrez votre email et votre mot de passe pour vous connecter</p>
+          )}
+          {error && <p className="error">{error}</p>}
+          <div className="input-group">
+            <label htmlFor="yourEmail">Email</label>
+            <input
+              type="email"
+              id="yourEmail"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
 
-        <div className="input-group">
-          <label htmlFor="yourPassword">Mot de passe</label>
-          <input
-            type="password"
-            id="yourPassword"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+          <div className="input-group">
+            <label htmlFor="yourPassword">Mot de passe</label>
+            <input
+              type="password"
+              id="yourPassword"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
 
-        <button className="submit-btn" onClick={handleLogin}>
-          Connexion
-        </button>
-        <p>
-          Vous n'avez pas de compte ? <a href="/signup">Inscrivez-vous ici</a>
-        </p>
+          <button className="submit-btn" onClick={handleLogin}>
+            Connexion
+          </button>
+          <p>
+            Vous n'avez pas de compte ?{" "}
+            <a href="/#/signup">Inscrivez-vous ici</a>
+          </p>
+        </div>
       </div>
-    </main>
   );
 };
 

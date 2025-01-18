@@ -53,6 +53,7 @@ const Details = ({ product }) => {
                   <label>Categorie:</label>
                   <input type="text" value={product.category_name} disabled />
                 </div>
+                
                 <Button variant="secondary" onClick={handleClose}>
                   Fermer
                 </Button>

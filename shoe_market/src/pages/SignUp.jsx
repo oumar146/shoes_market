@@ -97,7 +97,7 @@ const Signup = () => {
           </button>
 
           <p>
-            Vous avez déjà un compte ? <a href="/login">Connectez-vous ici</a>
+            Vous avez déjà un compte ? <a href="/#/login">Connectez-vous ici</a>
           </p>
         </div>
       </div>

@@ -1,86 +1,157 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "./UserContext"; // Import du contexte utilisateur
+import React, { useState, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
-  Navbar,
-  Offcanvas,
-  Container,
-  Nav,
-  NavDropdown,
-  Dropdown,
-} from "react-bootstrap";
-import "../styles/header.css";
+  Dialog,
+  DialogPanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from "@headlessui/react";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/outline";
+import { UserContext } from "./UserContext"; // Import du contexte utilisateur
+
+const DropdownMenu = ({ user, mobileMenuOpen, setMobileMenuOpen }) => {
+  const routesWithNames = [
+    { path: "/my-offers", name: "Mes offres" },
+    { path: "/all-offers", name: "Toutes les offres" },
+  ];
+
+  return (
+    <Menu as="div" className="relative inline-block">
+      <MenuButton className="inline-flex items-center text-sm font-semibold text-gray-700">
+        Offres <ChevronDownIcon className="h-5 w-5 ml-1" aria-hidden="true" />
+      </MenuButton>
+      <MenuItems className="absolute left-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        {routesWithNames.map((route) => (
+          <MenuItem key={route.path} className = "hover-bg-whitesmoke">
+            <NavLink
+              to={!user && route.path === "/my-offers" ? "/login" : route.path}
+              onClick={() => mobileMenuOpen && setMobileMenuOpen(false)}
+              className="block px-4 py-2 text-sm"
+            >
+              {route.name}
+            </NavLink>
+          </MenuItem>
+        ))}
+      </MenuItems>
+    </Menu>
+  );
+};
 
 const Header = () => {
-  const { user, updateUser } = useContext(UserContext); // Utilisation du contexte
+  const { user, updateUser } = useContext(UserContext);
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Fonction pour déconnecter l'utilisateur
   const handleLogout = () => {
-    updateUser(null); // Effacer l'utilisateur du contexte
+    updateUser(null);
+    localStorage.removeItem("token");
     navigate("/home");
-    localStorage.removeItem("token"); // Supprimer le token du localStorage
   };
 
   return (
-    <>
-      <Navbar expand="md">
-        <Container fluid className="header">
-          <Navbar.Brand
-            onClick={() => {
-              navigate("/home");
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            Shoe<span>Market</span>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-md`} />
-          <Navbar.Offcanvas
-            id={`offcanvasNavbar-expand-md`}
-            aria-labelledby={`offcanvasNavbarLabel-expand-md`}
-            placement="end"
-          >
-            <Offcanvas.Header closeButton></Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav>
-                <Nav.Link onClick={() => navigate("/about")}>À propos</Nav.Link>
-                <Nav.Link onClick={() => navigate("/contact")}>
-                  Contact
-                </Nav.Link>
-                {user && (
-                  <Nav.Link onClick={() => navigate("/my-offers")}>
-                    Mes offres
-                  </Nav.Link>
-                )}
-                <Nav.Link onClick={() => navigate("/all-offers")}>
-                  Toutes les offres
-                </Nav.Link>
+    <header className="bg-white border-b border-gray-200">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between p-4">
+        <div className="flex items-center">
+          <NavLink to="/home" className="text-xl font-bold">
+            <span className="logo">ShoeMarket</span>
+          </NavLink>
+        </div>
 
-                <NavDropdown title="Mon compte">
-                  <NavDropdown.Item>Profil</NavDropdown.Item>
-                  <NavDropdown.Item>Commandes</NavDropdown.Item>
-                  <NavDropdown.Item>Paramètres</NavDropdown.Item>
-                  <NavDropdown.Item>Notifications</NavDropdown.Item>
-                  <NavDropdown.Item>Favoris</NavDropdown.Item>
-                  {user ? (
-                    <>
-                      <Dropdown.Divider />
-                      <NavDropdown.Item onClick={handleLogout}>
-                        Se déconnecter
-                      </NavDropdown.Item>
-                    </>
-                  ) : (
-                    <NavDropdown.Item onClick={() => navigate("/login")}>
-                      Se connecter
-                    </NavDropdown.Item>
-                  )}
-                </NavDropdown>
-              </Nav>
-            </Offcanvas.Body>
-          </Navbar.Offcanvas>
-        </Container>
-      </Navbar>
-    </>
+        <div className="hidden lg:flex items-center space-x-4">
+          <NavLink to="/home" className="text-sm font-semibold text-gray-700">
+            Home
+          </NavLink>
+          <DropdownMenu
+            user={user}
+            mobileMenuOpen={mobileMenuOpen}
+            setMobileMenuOpen={setMobileMenuOpen}
+          />
+          {user ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-semibold text-gray-700"
+            >
+              Se déconnecter
+            </button>
+          ) : (
+            <NavLink
+              to="/login"
+              className="text-sm font-semibold text-gray-700"
+            >
+              Se connecter
+            </NavLink>
+          )}
+        </div>
+
+        <div className="lg:hidden">
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-2 text-gray-700"
+          >
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+      </nav>
+
+      <Dialog
+        open={mobileMenuOpen}
+        onClose={setMobileMenuOpen}
+        className="lg:hidden"
+      >
+        <DialogPanel className="fixed inset-0 z-10 bg-white p-4">
+          <div className="flex justify-between items-center mb-4">
+            <NavLink to="/home" className="text-xl font-bold text-black-700">
+              ShoeMarket
+            </NavLink>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 text-gray-700"
+            >
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            <NavLink
+              to="/home"
+              className="block text-sm font-semibold text-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </NavLink>
+            <DropdownMenu
+              mobileMenuOpen={mobileMenuOpen}
+              setMobileMenuOpen={setMobileMenuOpen}
+            />
+            {user ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-sm font-semibold text-gray-700"
+              >
+                Se déconnecter
+              </button>
+            ) : (
+              <NavLink
+                to="/login"
+                className="block text-sm font-semibold text-gray-700"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Se connecter
+              </NavLink>
+            )}
+          </div>
+        </DialogPanel>
+      </Dialog>
+    </header>
   );
 };
 

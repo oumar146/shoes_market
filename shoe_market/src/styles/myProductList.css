@@ -10,6 +10,7 @@
 .product-list .card {
   width: 18rem;
   margin: 1rem;
+border: 1px solid #ddd;
 }
 
 .product-list .card:hover {
@@ -19,6 +20,7 @@
 .product-list .card img {
   height: 200px;
   max-width: 100%;
+  width: 100vh;
   object-fit: cover;
   border-bottom: 0.1rem solid #ddd;
 }
@@ -45,32 +47,26 @@
   text-align: left;
 }
 
-.product-list .btn-danger {
-  background-color: #d9534f;
-  border-color: #d43f3a;
-}
 
-.product-list .btn-danger:hover {
-  background-color: #c9302c;
-  border-color: #ac2925;
-}
-
-.product-list .btn-primary {
-  background-color: #4892d3;
-  border-color: #4892d3;
-}
-
-.product-list .btn-primary:hover {
-  background-color: #0b8dff;
-  border-color: #4892d3;
-}
 
 .form-btn {
   width: 100%;
   margin-bottom: 0.5rem;
   font-size: 2vh;
+  padding: 1vh 1vh;
 }
 
+.form-btn {
+  padding: 15px 20px;
+  background-color: black;
+  color: white;
+
+}
+
+.form-btn:hover,
+.form-btn:focus {
+  color: rgb(222, 221, 221);
+}
 .no-product-message {
   font-size: 2vh;
   text-align: center;

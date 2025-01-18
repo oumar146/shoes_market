@@ -2,32 +2,87 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-items: self-start;
 }
 
-.product-info .card-text {
-  text-align: center;
+.offer-details .card-text {
+  text-align: start;
 }
 
-.product-info button {
+.offer-details {
+  padding: 0px;
+  margin: 0px;
+  background-color: black;
+}
+
+.offer-details .card-text {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.offer-details .card-text *{
+  color: white;
+  font-size: 2.1vh;
+}
+
+.offer-details button {
   padding: 10px 15px;
-  background-color: #137c8b;
+  background-color: black;
+  color: white;
   border: none;
 }
 
-.product-info button:hover,
-.product-info button:focus {
-  background-color: #0f626f;
+.offer-details button:hover,
+.offer-details button:focus {
+  color: whitesmoke;
+}
+
+.modal-header .close {
+  color: white;
+  font-size: 1.5rem; 
+}
+
+.modal-header .close:hover {
+  color: #f0f0f0; 
+}
+
+.custom-modal-dialog .modal-content {
+  background-color: white;
+  color: black;
+  max-width: 350px;
+  margin: auto;
+}
+
+
+.custom-modal-dialog .modal-header {
   border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.product-info .card-title,
-.product-info .price {
-  font-weight: bolder;
-  color: #344d59;
-  font-size: 2vh;
+.custom-modal-dialog .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  color: black;
 }
 
-.product-info .category {
-  color: #7a90a4;
-  font-size: 1.7vh;
+.custom-modal-dialog .modal-footer {
+  padding: 0px;
+  background-color: black;
+}
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  padding: 3vh;
+  gap: 2vh;
+  background-color: black;
+  color: white;
 }

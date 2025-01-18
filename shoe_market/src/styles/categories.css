@@ -1,27 +1,50 @@
+/* Section principale */
 .categories {
   text-align: center;
   padding: 60px;
-  background-color: #b8cbd0;
+  background-color: #1C2942;
 }
 
-.category-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+/* Titre principal */
+.title {
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+  padding: 5vh 0px;
 }
 
-.category-item {
+/* Grille des catégories */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 3vh 5vh;
   background-color: white;
+}
+
+/* Élément individuel */
+.category-item {
   padding: 20px;
   border-radius: 5px;
-  width: 200px;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.category-item:hover {
-  transform: translateY(-5px);
+/* Image de catégorie */
+.category-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+/* Titre de la catégorie */
+.category-title {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #1C2942;
 }
