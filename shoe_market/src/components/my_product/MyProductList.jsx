@@ -12,14 +12,6 @@ const MyProductList = ({ user }) => {
   const [error, setError] = useState(null);
   const [requestSent, setRequestSent] = useState(false);
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, "0");
-    const month = (date.getMonth() + 1).toString().padStart(2, "0");
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
-
   const deleteProduct = async (productId) => {
     try {
       const token = localStorage.getItem("token");
@@ -74,20 +66,14 @@ const MyProductList = ({ user }) => {
           <Card key={product.id} style={{ width: "18rem", margin: "1rem" }}>
             <Card.Img variant="top" src={product.image_url} />
             <Card.Body>
-              <Card.Title>
-                <span>{product.name}</span>
-              </Card.Title>
-              <Card.Text>
-                Date de création: {formatDate(product.creation_date)} <br />
-              </Card.Text>
               {/* // button pour modifier un produit  */}
               <EditForm product={product} />
               {/* // button pour voir les détails d'un produit  */}
               <Details product={product} />
               {/* // button pour supprimer un produit  */}
               <Button
+              variant="black"
                 className="form-btn"
-                variant="danger"
                 onClick={() => {
                   deleteProduct(product.id);
                 }}

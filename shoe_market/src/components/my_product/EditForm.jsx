@@ -108,7 +108,7 @@ const EditForm = ({ product }) => {
       {show && <ProtectedRoute />}
       {user && (
         <>
-          <Button variant="primary" className="form-btn" onClick={handleShow}>
+          <Button variant="black" className="form-btn" onClick={handleShow}>
             Modifier
           </Button>
 
@@ -180,7 +180,7 @@ const EditForm = ({ product }) => {
                     onChange={handleFileChange}
                   />
                 </div>
-                <Button variant="success" type="submit" onClick={handleSubmit}>
+                <Button className="form-btn" variant="black" type="submit" onClick={handleSubmit}>
                   Modifier
                 </Button>
               </form>

@@ -16,7 +16,7 @@ const Details = ({ product }) => {
       {show && <ProtectedRoute />}
       {user && (
         <>
-          <Button variant="secondary" className="form-btn" onClick={handleShow}>
+          <Button variant="black" className="form-btn" onClick={handleShow}>
             Détails
           </Button>
 
@@ -54,7 +54,7 @@ const Details = ({ product }) => {
                   <input type="text" value={product.category_name} disabled />
                 </div>
                 
-                <Button variant="secondary" onClick={handleClose}>
+                <Button variant="black" className="form-btn" onClick={handleClose}>
                   Fermer
                 </Button>
               </form>

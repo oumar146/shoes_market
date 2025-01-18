@@ -16,7 +16,6 @@ const Categories = () => {
 
         // Ajout des images spécifiques pour certaines catégories
         const updatedCategories = fetchedCategories.map((category) => {
-
           switch (category.name.toLowerCase()) {
             case "sneakers":
               return {
@@ -36,26 +35,25 @@ const Categories = () => {
                 image:
                   "https://img01.ztat.net/outfit/2ed4b58dd45e498294824044e70b6a39/5f0e1e4d3730491fb20d926f1830e65b.jpg?imwidth=600",
               };
-              case "talons":
-                return {
-                  ...category,
-                  image:
-                    "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/22ccc03e-b68a-4934-983b-3ea7808222b8/PHANTOM+GX+II+ELITE+FG.png",
-                };
-                case "chaussons":
-                  return {
-                    ...category,
-                    image:
-                      "https://img01.ztat.net/outfit/2860b3c4c3be4c02bc1a3647179e1a13/c28a07257eb849dbb6da608f4ce9b810.jpg?imwidth=1800",
-                  };
+            case "talons":
+              return {
+                ...category,
+                image:
+                  "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/22ccc03e-b68a-4934-983b-3ea7808222b8/PHANTOM+GX+II+ELITE+FG.png",
+              };
+            case "chaussons":
+              return {
+                ...category,
+                image:
+                  "https://img01.ztat.net/outfit/2860b3c4c3be4c02bc1a3647179e1a13/c28a07257eb849dbb6da608f4ce9b810.jpg?imwidth=1800",
+              };
             default:
               return category;
           }
         });
 
         setCategories(updatedCategories);
-  
-        } catch (error) {
+      } catch (error) {
         console.error("Erreur lors de la récupération des catégories:", error);
         setError("Erreur lors de la récupération des catégories.");
       }
@@ -73,12 +71,11 @@ const Categories = () => {
           categories.map((category) => (
             <NavLink
               key={category.name}
-              to={`/cart/${category.slug}`} // Supposant que chaque catégorie a un slug pour générer les routes
+              to="/all-offers"
               className="category-item"
-              onClick={() => window.scrollTo(0, 0)}
             >
               <img
-                src={category.image} // Image associée à la catégorie
+                src={category.image}
                 alt={category.name}
                 className="category-image"
               />

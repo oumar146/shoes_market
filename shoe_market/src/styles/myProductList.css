@@ -2,14 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
-  padding: 1rem;
 }
 
 .product-list .card {
   width: 18rem;
-  margin: 1rem;
 border: 1px solid #ddd;
 }
 
@@ -22,11 +20,10 @@ border: 1px solid #ddd;
   max-width: 100%;
   width: 100vh;
   object-fit: cover;
-  border-bottom: 0.1rem solid #ddd;
 }
 
 .product-list .card .card-body {
-  padding: 1rem;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,42 +33,37 @@ border: 1px solid #ddd;
   font-size: 2vh;
   font-weight: bold;
   color: #333;
-  margin-bottom: 0.5rem;
   text-align: left;
 }
 
 .product-list .card-text {
   font-size: 1.5vh;
   color: #666;
-  margin-bottom: 1rem;
   text-align: left;
 }
 
 
-
 .form-btn {
+  border: 1px solid whitesmoke;
+  border-radius: 0px;
   width: 100%;
-  margin-bottom: 0.5rem;
   font-size: 2vh;
-  padding: 1vh 1vh;
-}
-
-.form-btn {
   padding: 15px 20px;
   background-color: black;
   color: white;
-
 }
 
 .form-btn:hover,
 .form-btn:focus {
-  color: rgb(222, 221, 221);
+  background-color: black;
+  color: whitesmoke;
 }
 .no-product-message {
   font-size: 2vh;
   text-align: center;
   font-weight: bold;
   width: 100%;
+  text-align: center;
 }
 
 @media (max-width: 600px) {

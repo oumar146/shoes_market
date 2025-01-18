@@ -1,0 +1,18 @@
+#all-offers .content {
+display: flex;
+padding: 5vh;
+gap: 2vh;
+}
+
+section[id="search"]{
+    display: flex;
+    align-items: center;
+    gap: 5vh;
+    padding: 4vh;
+}
+
+@media (max-width: 960px) {
+    .filter {
+      display: none;
+    }
+  }

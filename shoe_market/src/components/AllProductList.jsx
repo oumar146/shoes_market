@@ -6,7 +6,7 @@ import ProductModal from "./ProductModal";
 import "../styles/allProductList.css";
 import config from "../config";
 
-const AllProductList = ({ input }) => {
+const AllProductList = ({ input, filters }) => {
   const [products, setProducts] = useState([]);
   const [productFilter, setProductFilter] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -36,10 +36,31 @@ const AllProductList = ({ input }) => {
         const matchesInputFilter =
           product.name.toLowerCase().includes(input.toLowerCase()) ||
           product.description.toLowerCase().includes(input.toLowerCase());
-        return matchesUserFilter && matchesInputFilter;
+        const matchesSizeFilter = filters.size
+          ? product.size === filters.size
+          : true;
+        const matchesCategoryFilter = filters.category
+          ? product.category_name.toLowerCase() === filters.category.toLowerCase()
+          : true;
+        const matchesPriceFilter =
+          (filters.priceMin ? parseFloat(product.price) >= parseFloat(filters.priceMin) : true) &&
+          (filters.priceMax ? parseFloat(product.price) <= parseFloat(filters.priceMax) : true);
+        const matchesDateFilter = filters.date
+          ? new Date(product.creation_date) >= new Date(filters.date)
+          : true;
+
+        return (
+          matchesUserFilter &&
+          matchesInputFilter &&
+          matchesSizeFilter &&
+          matchesCategoryFilter &&
+          matchesPriceFilter &&
+          matchesDateFilter
+        );
       })
     );
-  }, [input, products, user]);
+  }, [input, products, user, filters]);
+  
 
   const handleCardClick = (product) => {
     setSelectedProduct(product);
@@ -55,7 +76,7 @@ const AllProductList = ({ input }) => {
         productFilter.map((product) => (
           <Card
             key={product.reference}
-            style={{ width: "18rem", margin: "1rem", cursor: "pointer" }}
+            style={{ width: "18rem", margin: "0rem 1rem", cursor: "pointer" }}
             onClick={() => handleCardClick(product)}
           >
             <Card.Img variant="top" src={product.image_url} />

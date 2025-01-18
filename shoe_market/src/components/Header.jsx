@@ -126,6 +126,7 @@ const Header = () => {
               Home
             </NavLink>
             <DropdownMenu
+              user={user}
               mobileMenuOpen={mobileMenuOpen}
               setMobileMenuOpen={setMobileMenuOpen}
             />

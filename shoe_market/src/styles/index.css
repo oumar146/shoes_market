@@ -23,3 +23,31 @@ body {
   background-color: black;
   color: whitesmoke;
 }
+
+
+select * {
+  -webkit-appearance: none;
+
+  background-color: #f0f0f0;
+  color: #344D59;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  appearance: none; /* Supprime le style natif du navigateur */
+}
+
+select *:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+option {
+  background-color: white;
+  color: black;
+}
+
+option:hover {
+  background-color: black;
+  color: white;
+}
+

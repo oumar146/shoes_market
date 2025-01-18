@@ -80,11 +80,14 @@ p[style*="color: green"] {
   background-color: black;
   color: whitesmoke;
   border: none;
+  outline: none;
 }
 
 .product-add-btn .btn:hover,
 .product-add-btn .btn:focus {
   color: rgb(222, 221, 221);
+  border: none;
+  outline: none;
 }
 
 @media (max-width: 600px) {

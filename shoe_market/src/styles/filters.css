@@ -1,0 +1,43 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 25vw;
+  background-color: white;
+  padding: 2vh;
+}
+
+.filters div {
+  display: flex;
+  flex-direction: column;
+}
+
+.filters label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.filters input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.filters button {
+  background-color: black;
+  color: white;
+  padding: 1.2vh;
+border: 1px solid white;
+  }
+
+input[type="range"]::-webkit-slider-thumb {
+  cursor: pointer;
+}
+
+@media (max-width: 960px) {
+  .filters {
+    width: 100%;
+  }
+}

@@ -92,10 +92,10 @@ const TokenChecker = () => {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleRedirectHome}>
+              <Button  onClick={handleRedirectHome}>
                 Accueil
               </Button>
-              <Button variant="primary" onClick={handleRedirectLogin}>
+              <Button onClick={handleRedirectLogin}>
                 Se connecter
               </Button>
             </Modal.Footer>

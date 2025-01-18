@@ -127,7 +127,7 @@ const ProductForm = () => {
       {show && <ProtectedRoute />}
       {user && (
         <>
-          <Button className="btn" onClick={handleShow}>
+          <Button primary="black" className="btn" onClick={handleShow}>
             Nouveau produit
           </Button>
 
@@ -157,15 +157,22 @@ const ProductForm = () => {
                   />
                 </div>
                 <div>
-                  <label>Taille (EU):</label>
-                  <input
-                    type="number"
-                    step="5"
-                    value={size}
-                    onChange={(e) => setSize(e.target.value)}
-                    required
-                  />
-                </div>
+  <label htmlFor="size">Taille (EU):</label>
+  <select
+    id="size"
+    value={size}
+    onChange={(e) => setSize(e.target.value)}
+    required
+  >
+    <option value="">Sélectionnez une taille</option>
+    {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45].map((sizeOption) => (
+      <option key={sizeOption} value={sizeOption}>
+        {sizeOption}
+      </option>
+    ))}
+  </select>
+</div>
+
                 <div>
                   <label>Prix:</label>
                   <input
