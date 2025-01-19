@@ -154,6 +154,7 @@ const EditForm = ({ product }) => {
                     step="0.01"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    inputMode="numeric"
                     required
                   />
                 </div>
