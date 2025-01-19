@@ -165,7 +165,7 @@ const ProductForm = () => {
     required
   >
     <option value="">Sélectionnez une taille</option>
-    {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45].map((sizeOption) => (
+    {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50].map((sizeOption) => (
       <option key={sizeOption} value={sizeOption}>
         {sizeOption}
       </option>
@@ -180,6 +180,7 @@ const ProductForm = () => {
                     step="10"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    inputMode="numeric"
                     required
                   />
                 </div>

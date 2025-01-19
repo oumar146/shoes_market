@@ -88,7 +88,7 @@ const Filters = ({ filters, setFilters }) => {
           onChange={handleChange}
         >
           <option value="">Toutes les tailles</option>
-          {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45].map((size) => (
+          {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50].map((size) => (
             <option key={size} value={size}>
               {size}
             </option>
