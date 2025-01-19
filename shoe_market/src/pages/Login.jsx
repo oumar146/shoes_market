@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../components/UserContext"; // Import du contexte utilisateur
 import axios from "axios";
 import "../styles/login/form.css";
@@ -87,7 +87,7 @@ const Login = () => {
           </button>
           <p>
             Vous n'avez pas de compte ?{" "}
-            <a href="/#/signup">Inscrivez-vous ici</a>
+            <NavLink to="/signup">Inscrivez-vous ici</NavLink>
           </p>
         </div>
       </div>
