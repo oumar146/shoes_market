@@ -23,6 +23,13 @@ const routes = [
   { path: "/my-offers", element: <MyOffers /> },
   { path: "/all-offers", element: <AllOffers /> },
   { path: "/offer/:reference", element: <Offer /> },
+  { path: "/#/", element: <Home /> },
+  { path: "/#/home", element: <Home /> },
+  { path: "/#/about", element: <AboutUs /> },
+  { path: "/#/contact", element: <Contact /> },
+  { path: "/#/my-offers", element: <MyOffers /> },
+  { path: "/#/all-offers", element: <AllOffers /> },
+  { path: "/#/offer/:reference", element: <Offer /> },
 ];
 
 const Router = () => {
