@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/login/form.css";
 import config from "../config";
@@ -97,7 +97,7 @@ const Signup = () => {
           </button>
 
           <p>
-            Vous avez déjà un compte ? <a href="/#/login">Connectez-vous ici</a>
+            Vous avez déjà un compte ? <NavLink to="/login">Connectez-vous ici</NavLink>
           </p>
         </div>
       </div>
