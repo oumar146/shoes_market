@@ -181,7 +181,7 @@ const EditForm = ({ product }) => {
                     onChange={handleFileChange}
                   />
                 </div>
-                <Button className="form-btn" variant="black" type="submit" onClick={handleSubmit}>
+                <Button className="form-btn" variant="black" type="submit">
                   Modifier
                 </Button>
               </form>

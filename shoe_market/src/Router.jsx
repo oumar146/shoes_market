@@ -8,8 +8,6 @@ import Home from "./pages/Home";
 import MyOffers from "./pages/MyOffers";
 import AllOffers from "./pages/AllOffers";
 import Offer from "./pages/Offer";
-import AboutUs from "./pages/AboutUs";
-import Contact from "./pages/Contact";
 
 // Import de ProtectedRoute
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -18,15 +16,11 @@ import ProtectedRoute from "./components/ProtectedRoute";
 const routes = [
   { path: "/", element: <Home /> },
   { path: "/home", element: <Home /> },
-  { path: "/about", element: <AboutUs /> },
-  { path: "/contact", element: <Contact /> },
   { path: "/my-offers", element: <MyOffers /> },
   { path: "/all-offers", element: <AllOffers /> },
   { path: "/offer/:reference", element: <Offer /> },
   { path: "/#/", element: <Home /> },
   { path: "/#/home", element: <Home /> },
-  { path: "/#/about", element: <AboutUs /> },
-  { path: "/#/contact", element: <Contact /> },
   { path: "/#/my-offers", element: <MyOffers /> },
   { path: "/#/all-offers", element: <AllOffers /> },
   { path: "/#/offer/:reference", element: <Offer /> },

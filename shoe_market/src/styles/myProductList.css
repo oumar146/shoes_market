@@ -11,10 +11,6 @@
 border: 1px solid #ddd;
 }
 
-.product-list .card:hover {
-  box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.1);
-}
-
 .product-list .card img {
   height: 200px;
   max-width: 100%;
@@ -53,10 +49,10 @@ border: 1px solid #ddd;
   color: white;
 }
 
-.form-btn:hover,
-.form-btn:focus {
-  background-color: black;
-  color: whitesmoke;
+.form-btn:hover {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
 }
 .no-product-message {
   font-size: 2vh;

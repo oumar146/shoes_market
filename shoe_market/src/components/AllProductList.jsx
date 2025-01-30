@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { Card, Button } from "react-bootstrap";
+import { Card} from "react-bootstrap";
 import { UserContext } from "./UserContext";
 import ProductModal from "./ProductModal";
 import "../styles/allProductList.css";
@@ -30,11 +30,12 @@ const AllProductList = ({ input, filters }) => {
   }, []);
 
   useEffect(() => {
-    setProductFilter(
+    console.log(products)
+    products && setProductFilter(
       products.filter((product) => {
         const matchesUserFilter = user ? product.creator_id !== user.id : true;
         const matchesInputFilter =
-          product.name.toLowerCase().includes(input.toLowerCase()) ||
+          product.product_name.toLowerCase().includes(input.toLowerCase()) ||
           product.description.toLowerCase().includes(input.toLowerCase());
         const matchesSizeFilter = filters.size
           ? product.size === filters.size
@@ -88,7 +89,7 @@ const AllProductList = ({ input, filters }) => {
           </Card>
         ))
       ) : (
-        <h4 className="no-product-message">Aucune offre trouvée</h4>
+        <h4 style={{textAlign:"center", width:"90vw"}} className="no-product-message">Aucune offre trouvée</h4>
       )}
 
       {/* Modal pour afficher les détails du produit */}

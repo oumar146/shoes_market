@@ -19,7 +19,7 @@ const ProductForm = () => {
   const [image, setImage] = useState(null);
   const [typeConfirmed, setTypeConfirmed] = useState(false);
   const [error, setError] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
   const imageType = ["image/jpg", "image/jpeg", "image/png"];
   const { user } = useContext(UserContext);
 
@@ -79,11 +79,6 @@ const ProductForm = () => {
       return;
     }
 
-    if (image && !typeConfirmed) {
-      setError("Vérifier l'extension du fichier de l'image");
-      return;
-    }
-
     setIsSubmitting(true);
     const creationDate = new Date().toISOString();
 
@@ -127,7 +122,7 @@ const ProductForm = () => {
       {show && <ProtectedRoute />}
       {user && (
         <>
-          <Button primary="black" className="btn" onClick={handleShow}>
+          <Button variant="black" onClick={handleShow}>
             Nouveau produit
           </Button>
 
@@ -207,7 +202,7 @@ const ProductForm = () => {
                     accept="image/png, image/jpeg, image/jpg"
                   />
                 </div>
-                <Button variant="success" type="submit" disabled={isSubmitting}>
+                <Button variant="black" type="submit" disabled={isSubmitting}>
                   Ajouter
                 </Button>
               </form>

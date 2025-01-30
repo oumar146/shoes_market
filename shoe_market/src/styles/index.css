@@ -1,8 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: white;
   font-family: inherit;
 }
 
@@ -51,3 +55,17 @@ option:hover {
   color: white;
 }
 
+.btn{
+  background-color: black;
+  color: white;
+  border-radius: 0px;
+}
+.btn:hover, .btn-primary:hover{
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.modal-content{
+  border-radius: 0px;
+}

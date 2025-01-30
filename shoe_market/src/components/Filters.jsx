@@ -156,10 +156,10 @@ const Filters = ({ filters, setFilters }) => {
 
       {/* Boutons */}
       <div className="filter-buttons">
-      <button type="button" onClick={applyFilters}>
+      <button type="button" className="btn" onClick={applyFilters}>
           Appliquer les filtres
         </button>
-        <button type="button" onClick={resetFilters}>
+        <button type="button" className="btn" onClick={resetFilters}>
           Réinitialiser les filtres
         </button>
       </div>

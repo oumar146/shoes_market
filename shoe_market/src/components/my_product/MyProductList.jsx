@@ -75,7 +75,7 @@ const MyProductList = ({ user }) => {
               variant="black"
                 className="form-btn"
                 onClick={() => {
-                  deleteProduct(product.id);
+                  deleteProduct(product.product_id);
                 }}
               >
                 Supprimer
