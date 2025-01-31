@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../context/UserContext";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProtectedRoute from "../ProtectedRoute";

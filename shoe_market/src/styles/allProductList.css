@@ -16,7 +16,7 @@
   background-color: black;
 }
 
-.offer-details .card-text {
+.offer-details .card-text, .add-to-cart-btn {
   background-color: black;
   display: flex;
   justify-content: space-between;
@@ -71,10 +71,19 @@
   padding: 20px;
   color: black;
 }
+.custom-modal-dialog .modal-body button:focus{
+background-color: black;
+color: white;
+}
 
 .custom-modal-dialog .modal-footer {
-  padding: 0px;
+  padding: 5px;
   background-color: black;
+  border-radius: 0px;
+}
+.custom-modal-dialog .modal-footer button {
+  width: 100%;
+  border: none;
 }
 .contact-btn {
   display: flex;
@@ -86,4 +95,24 @@
   gap: 2vh;
   background-color: black;
   color: white;
+}
+
+
+.card-header{
+  display: flex; 
+justify-content: space-between;
+}
+
+.offer-details {
+  position: relative;
+}
+
+.add-to-cart-btn {
+  opacity: 1; 
+  transition: opacity 0.3s ease; 
+  position: absolute; 
+}
+
+.offer-details:hover .add-to-cart-btn {
+  
 }

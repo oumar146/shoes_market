@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
@@ -17,10 +17,8 @@ const ProductForm = () => {
   const [categoryName, setCategoryName] = useState("");
   const [categories, setCategories] = useState([]);
   const [image, setImage] = useState(null);
-  const [typeConfirmed, setTypeConfirmed] = useState(false);
   const [error, setError] = useState(null);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-  const imageType = ["image/jpg", "image/jpeg", "image/png"];
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { user } = useContext(UserContext);
 
   const navigate = useNavigate();
@@ -61,14 +59,6 @@ const ProductForm = () => {
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
-    const types = imageType.filter(
-      (imageType) => imageType === e.target.files[0].type
-    );
-    if (!types.length > 0) {
-      setTypeConfirmed(false);
-      return;
-    }
-    setTypeConfirmed(true);
   };
 
   const handleSubmit = async (e) => {
@@ -133,7 +123,11 @@ const ProductForm = () => {
             <Modal.Body>
               {error && <p className="error">{error}</p>}
 
-              <form onSubmit={handleSubmit}method="POST" enctype="multipart/form-data">
+              <form
+                onSubmit={handleSubmit}
+                method="POST"
+                enctype="multipart/form-data"
+              >
                 <div>
                   <label>Nom du produit:</label>
                   <input
@@ -152,21 +146,24 @@ const ProductForm = () => {
                   />
                 </div>
                 <div>
-  <label htmlFor="size">Taille (EU):</label>
-  <select
-    id="size"
-    value={size}
-    onChange={(e) => setSize(e.target.value)}
-    required
-  >
-    <option value="">Sélectionnez une taille</option>
-    {[35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50].map((sizeOption) => (
-      <option key={sizeOption} value={sizeOption}>
-        {sizeOption}
-      </option>
-    ))}
-  </select>
-</div>
+                  <label htmlFor="size">Taille (EU):</label>
+                  <select
+                    id="size"
+                    value={size}
+                    onChange={(e) => setSize(e.target.value)}
+                    required
+                  >
+                    <option value="">Sélectionnez une taille</option>
+                    {[
+                      35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+                      49, 50,
+                    ].map((sizeOption) => (
+                      <option key={sizeOption} value={sizeOption}>
+                        {sizeOption}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
                 <div>
                   <label>Prix:</label>

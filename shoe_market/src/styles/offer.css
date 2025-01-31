@@ -64,7 +64,7 @@
   margin-bottom: 1.5rem;
 }
 
-.add-to-cart-btn,
+/* .add-to-cart-btn,
 .buy-now-btn {
   background-color: black;
   color: #fff;
@@ -76,16 +76,16 @@
   font-size: 1rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
-}
+} */
 
 .buy-now-btn {
   background-color: #344d59;
 }
 
-.add-to-cart-btn:hover,
+/* .add-to-cart-btn:hover,
 .buy-now-btn:hover {
   background-color: #709ca7;
-}
+} */
 
 .contact a {
   color: #137c8b;

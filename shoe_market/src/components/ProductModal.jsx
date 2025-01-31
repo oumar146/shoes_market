@@ -1,10 +1,107 @@
-import React from "react";
-import { Modal } from "react-bootstrap";
+import React, { useState, useContext, useEffect } from "react";
+import { Modal, Button, Form, InputGroup } from "react-bootstrap";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { useCart } from "../context/CartContext";
+import config from "../config";
+import axios from "axios";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import "../styles/productModal.css";
 
-const ProductModal = ({ show, onHide, productDetails }) => {
+
+const ProductModal = ({ show, setShow, onHide, productDetails }) => {
+  const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(1);
+  const [total, setTotal] = useState(productDetails?.price || 0);
+  const { user } = useContext(UserContext);
+  const { addToCart } = useCart();
+
+  const [sizes, setSizes] = useState([]);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [sizeError, setSizeError] = useState(false); // État pour gérer l'erreur de taille
+
+  useEffect(() => {
+    const fetchSizes = async () => {
+      try {
+        const response = await axios.get(`${config.apiUrl}/product/sizes`);
+        setSizes(response.data.sizes);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSizes();
+  }, []);
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
+    setSizeError(false); // Réinitialiser l'erreur lorsque l'utilisateur sélectionne une taille
+  };
+
+  useEffect(() => {
+    if (show) {
+      setQuantity(1);
+      setTotal(productDetails?.price || 0);
+      setSelectedSize("");
+      setSizeError(false); // Réinitialiser l'erreur lorsque le modal s'ouvre
+    }
+  }, [show, productDetails]);
+
+  const increaseQuantity = () => {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+    setTotal(newQuantity * (productDetails?.price || 0));
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      const newQuantity = quantity - 1;
+      setQuantity(newQuantity);
+      setTotal(newQuantity * (productDetails?.price || 0));
+    }
+  };
+
+  const handleQuantityChange = (e) => {
+    const newQuantity = parseInt(e.target.value, 10);
+    if (!isNaN(newQuantity) && newQuantity > 0) {
+      setQuantity(newQuantity);
+      setTotal(newQuantity * (productDetails?.price || 0));
+    }
+  };
+
+  const handleAddToCart = async (user, productId, quantity) => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    // Vérifier si une taille a été sélectionnée
+    if (!selectedSize) {
+      setSizeError(true); // Afficher l'erreur si aucune taille n'est sélectionnée
+      return;
+    }
+
+    try {
+      addToCart(productId, quantity, selectedSize);
+      setShow(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="modal-component">
-      <Modal show={show} onHide={onHide} size="lg" centered   dialogClassName="custom-modal-dialog"
+      <Modal
+        show={show}
+        onHide={onHide}
+        size="lg"
+        centered
+        dialogClassName="custom-modal-dialog"
       >
         <Modal.Header closeButton>
           <Modal.Title>{productDetails?.name || "Produit"}</Modal.Title>
@@ -45,18 +142,67 @@ const ProductModal = ({ show, onHide, productDetails }) => {
               </p>
             </div>
           </div>
+
+          {/* Sélecteur de taille avec InputLabel et FormHelperText */}
+          <FormControl sx={{ margin: "10px 0px", minWidth: '100%' }} error={sizeError}>
+            <InputLabel id="demo-simple-select-helper-label">Taille</InputLabel>
+            <Select
+              labelId="demo-simple-select-helper-label"
+              id="demo-simple-select-helper"
+              value={selectedSize}
+              label="Taille"
+              onChange={handleSizeChange}
+            >
+              <MenuItem value="">
+                <em>Aucune</em>
+              </MenuItem>
+              {sizes.map((size) => (
+                <MenuItem key={size} value={size}>
+                  {size}
+                </MenuItem>
+              ))}
+            </Select>
+            {sizeError && (
+              <FormHelperText style={{ color: "red" }}>
+                Veuillez sélectionner une taille
+              </FormHelperText>
+            )}
+          </FormControl>
+
+          {/* Champ de saisie pour la quantité avec boutons + et - */}
+          <Form.Group controlId="quantity">
+            <Form.Label>Quantité :</Form.Label>
+            <InputGroup>
+              <Button variant="outline-secondary" onClick={decreaseQuantity}>
+                <RemoveCircleOutlineIcon />
+              </Button>
+              <Form.Control
+                type="number"
+                value={quantity}
+                onChange={handleQuantityChange}
+                min="1"
+              />
+              <Button variant="outline-secondary" onClick={increaseQuantity}>
+                <AddCircleIcon onClick={increaseQuantity} />
+              </Button>
+            </InputGroup>
+          </Form.Group>
+
+          {/* Affichage de la somme totale */}
+          <p>
+            <strong>Total :</strong> {total} €
+          </p>
         </Modal.Body>
         <Modal.Footer>
-          <a
-            href={`mailto:${productDetails.creator_email}?subject=Demande concernant ${productDetails.name}&body=Bonjour,%0D%0A%0D%0AJe suis intéressé par l'offre de "${productDetails.name}" et j'aimerais échanger avec vous à ce sujet.%0D%0A%0D%0AMerci d'avance pour votre réponse.%0D%0A%0D%0ACordialement.`}
-            className="contact-btn"
+          <Button
+          variant="none"
+            className="btn-style"
+            onClick={() => {
+              handleAddToCart(user, productDetails.product_id, quantity);
+            }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
-              <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2zm3.708 6.208L1 11.105V5.383zM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2z"/>
-              <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
-            </svg>
-            Contacter le vendeur
-          </a>
+            Ajouter au panier
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { UserContext } from "../components/UserContext"; // Import du contexte utilisateur
+import { UserContext } from "../context/UserContext"; // Import du contexte utilisateur
 import config from "../config";
 
 const TokenChecker = () => {
@@ -30,7 +30,6 @@ const TokenChecker = () => {
       );
 
       if (response.data.newToken) {
-        console.log("nouveau token");
         localStorage.setItem("token", response.data.newToken);
       }
       return true; // Token valide
@@ -45,15 +44,15 @@ const TokenChecker = () => {
   // Vérification du token lors du chargement de la route protégée
   useEffect(() => {
     const checkToken = async () => {
-      const isValid = await checkTokenValidity();
-      if (!isValid) {
-        console.log("Le token est invalide, affichage du modal.");
-      } else {
-        console.log("Le token est valide.");
-      }
+     checkTokenValidity();
+      // if (!isValid) {
+      //   console.log("Le token est invalide, affichage du modal.");
+      // } else {
+      //   console.log("Le token est valide.");
+      // }
     };
 
-    checkToken(); // Exécute la vérification du token une seule fois
+    checkToken(); 
   }, [navigate, updateUser]);
 
   // Gestion des redirections lorsque la session expire

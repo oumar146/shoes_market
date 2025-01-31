@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../context/UserContext";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";

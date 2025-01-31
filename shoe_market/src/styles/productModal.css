@@ -1,0 +1,115 @@
+/* Style général pour le modal */
+.modal-component .modal-content {
+  background-color: #000; /* Fond noir */
+  color: #fff; /* Texte blanc */
+  /* border-radius: 10px; */
+  border: 1px solid #444; /* Bordure grise pour un effet sophistiqué */
+}
+
+/* Style pour l'en-tête du modal */
+.modal-component .modal-header {
+  border-bottom: 1px solid #444; /* Bordure grise */
+  padding: 15px;
+}
+
+.modal-component .modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; /* Texte blanc */
+}
+
+/* Style pour le corps du modal */
+.modal-component .modal-body {
+  padding: 20px;
+}
+
+/* Style pour l'image du produit */
+.modal-component img {
+  max-width: 100%;
+  /* border-radius: 8px; */
+  border: 2px solid #fff; /* Bordure blanche pour l'image */
+}
+
+/* Style pour les informations du produit */
+
+.modal-component .product-info p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #fff; /* Texte blanc */
+}
+
+.modal-component .product-info strong {
+  color: #fff; /* Texte blanc */
+}
+
+/* Style pour le champ de saisie de la quantité */
+.modal-component .input-group {
+  margin-top: 20px;
+}
+
+.modal-component .input-group .form-control {
+  background-color: #222; /* Fond sombre pour le champ de saisie */
+  color: #fff; /* Texte blanc */
+  border: 1px solid #444; /* Bordure grise */
+  text-align: center;
+}
+
+.modal-component .input-group .btn {
+  background-color: #444; /* Fond gris pour les boutons */
+  color: #fff; /* Texte blanc */
+  border: 1px solid #444; /* Bordure grise */
+}
+
+.modal-component .input-group .btn:hover {
+  background-color: #555; /* Fond gris plus clair au survol */
+}
+
+/* Style pour la somme totale */
+.modal-component .total {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff; /* Texte blanc */
+}
+
+/* Style pour le pied de page du modal */
+.modal-component .modal-footer {
+  border-top: 1px solid #444; /* Bordure grise */
+  padding: 15px;
+  border-radius: 0px;
+}
+
+.modal-component .modal-footer .btn {
+  margin-left: 10px;
+}
+
+.modal-component .modal-footer .btn-primary {
+  background-color: #444; /* Fond gris */
+  color: #fff; /* Texte blanc */
+  border: 1px solid #444; /* Bordure grise */
+}
+
+.modal-component .modal-footer .btn-secondary:hover {
+  background-color: #555; /* Fond gris plus clair au survol */
+}
+
+.modal-component .modal-footer .btn {
+  background-color: red;
+  color: #000; /* Texte noir */
+  border: 1px solid #fff; /* Bordure blanche */
+}
+
+.modal-component .modal-footer .btn-primary:focus {
+  background-color: black; /* Fond gris clair au survol */
+  color: white; /* Texte noir */
+}
+
+.btn-style {
+  background-color: black;
+  color: white;
+}
+.btn-style:hover,
+.btn-style:focus {
+  background-color: black;
+  color: white;
+}
