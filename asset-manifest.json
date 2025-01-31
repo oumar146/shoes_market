@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/shoes_market/static/css/main.6da50d60.css",
-    "main.js": "/shoes_market/static/js/main.9a97e3c2.js",
+    "main.js": "/shoes_market/static/js/main.fd896abe.js",
     "static/media/banniere.jpg": "/shoes_market/static/media/banniere.03657be8efb971c7c0f7.jpg",
     "index.html": "/shoes_market/index.html",
     "main.6da50d60.css.map": "/shoes_market/static/css/main.6da50d60.css.map",
-    "main.9a97e3c2.js.map": "/shoes_market/static/js/main.9a97e3c2.js.map"
+    "main.fd896abe.js.map": "/shoes_market/static/js/main.fd896abe.js.map"
   },
   "entrypoints": [
     "static/css/main.6da50d60.css",
-    "static/js/main.9a97e3c2.js"
+    "static/js/main.fd896abe.js"
   ]
 }
