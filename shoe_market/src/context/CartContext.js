@@ -64,6 +64,8 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (CartId) => {
     if (!user) return;
+    console.log(CartId)
+
     try {
       await axios.delete(`${config.apiUrl}/cart/remove`, {
         data: { user_id: user.id, cart_id: CartId },

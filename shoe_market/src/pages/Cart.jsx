@@ -1,6 +1,6 @@
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import React, { useState, useEffect, useContext } from "react";
 import Zoom from "@mui/material/Zoom";
 import axios from "axios";
 import config from "../config";
@@ -15,6 +15,56 @@ const Cart = () => {
   const { cart, removeFromCart } = useCart();
   const { user } = useContext(UserContext);
   const [products, setProducts] = useState([]);
+
+  // Fonction pour ajouter le prix à chaque item du panier
+  const getCartWithPrices = () => {
+    return cart.map((item) => {
+      const product = products.find((p) => p.product_id === item.product_id);
+      return {
+        ...item,
+        price: product ? product.price : 0, // Ajoute le prix à l'item
+      };
+    });
+  };
+
+  // Calculer le total du panier
+  const total = getCartWithPrices().reduce((acc, item) => {
+    return acc + parseFloat(item.price) * item.quantity;
+  }, 0);
+
+  const handleSubmit = async (cart, user_id, total) => {
+
+    if (!cart.length > 0 || !user_id || !total) {
+      alert("Tous les champs doivent être remplis.");
+      return;
+    }
+
+    try {
+      const orders = cart.map((item) => ({
+        product_id: item.product_id,
+        user_id: user_id,
+        unit_price: item.price, // Utilisation directe de item.price
+        status_id: 1,
+        amount: total,
+        quantity: item.quantity,
+      }));
+
+      const response = await axios.post(`${config.apiUrl}/order/new`, { orders });
+      orders.map((order)=>{
+      removeFromCart(order.product_id);
+
+      })
+      if (response.data.success) {
+        alert("Commande passée avec succès !");
+      } else {
+        alert("Erreur lors de la commande : " + response.data.message);
+      }
+
+    } catch (error) {
+      console.error("Erreur lors de la commande :", error);
+      alert("Une erreur est survenue lors de la commande.");
+    }
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,27 +82,14 @@ const Cart = () => {
     fetchProducts();
   }, [user]);
 
-  // Calculer le total du panier
-  const total = cart.reduce((acc, item) => {
-    const product = products.find((p) => p.product_id === item.product_id);
-    if (product) {
-      return acc + parseFloat(product.price) * item.quantity;
-    }
-    return acc;
-  }, 0);
-
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-    >
+    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header />
       <h5 className="title">Mon panier</h5>
       <main className="items-cart">
         {cart.length > 0 ? (
-          cart.map((item, index) => {
-            const product = products.find(
-              (p) => p.product_id === item.product_id
-            );
+          getCartWithPrices().map((item, index) => {
+            const product = products.find((p) => p.product_id === item.product_id);
             if (!product) return null;
 
             return (
@@ -61,7 +98,7 @@ const Cart = () => {
                   <img src={product.image_url} alt={product.product_name} />
                   <div className="cart-item-details">
                     <span>{product.product_name}</span>
-                    <span className="price">{product.price}€</span>
+                    <span className="price">{item.price}€</span> {/* Utilisation directe de item.price */}
                     <span>Quantité : {item.quantity}</span>
                     <span>Taille : {item.size}</span>
                   </div>
@@ -69,7 +106,6 @@ const Cart = () => {
                     <ClearIcon
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        // Supprimer cette entrée spécifique du panier
                         removeFromCart(item.id);
                       }}
                     />
@@ -88,14 +124,15 @@ const Cart = () => {
         <div className="cart-total">
           <h4>Total : {total.toFixed(2)}€</h4>
           <Button
-          variant="none"
+            variant="none"
             className="btn-style"
-            // onClick={() => {
-            //   handleAddToCart(user, productDetails.product_id, quantity);
-            // }}
+            onClick={() => {
+              handleSubmit(getCartWithPrices(), user.id, total.toFixed(2));
+            }}
           >
             Valider
-          </Button>        </div>
+          </Button>
+        </div>
       )}
       <Footer />
     </div>
