@@ -16,6 +16,7 @@ border: 1px solid #ddd;
   max-width: 100%;
   width: 100vh;
   object-fit: cover;
+  border-radius: 0px;
 }
 
 .product-list .card .card-body {

@@ -14,7 +14,7 @@ const ProductCaroussel = ({products, title}) => {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 5,
-    speed: 700,
+    speed: 400,
     initialSide: 0,
     arrows: true,
     responsive: [
