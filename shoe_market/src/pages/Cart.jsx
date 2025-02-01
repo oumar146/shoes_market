@@ -7,7 +7,8 @@ import config from "../config";
 import { useCart } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
 import ClearIcon from "@mui/icons-material/Clear";
-import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
+import { Button } from "@headlessui/react";
 import "../styles/cart.css";
 
 const Cart = () => {
@@ -86,7 +87,15 @@ const Cart = () => {
       {cart.length > 0 && (
         <div className="cart-total">
           <h4>Total : {total.toFixed(2)}€</h4>
-        </div>
+          <Button
+          variant="none"
+            className="btn-style"
+            // onClick={() => {
+            //   handleAddToCart(user, productDetails.product_id, quantity);
+            // }}
+          >
+            Valider
+          </Button>        </div>
       )}
       <Footer />
     </div>

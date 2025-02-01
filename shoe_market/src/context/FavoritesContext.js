@@ -3,12 +3,14 @@ import axios from "axios";
 import config from "../config";
 import { UserContext } from "./UserContext";
 
+
 const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
   const { user } = useContext(UserContext);
   const [favorites, setFavorites] = useState([]);
   const [fetchFavorites, setFetchFavorites] = useState(false);
+  
 
   useEffect(() => {
     const fetchMyFavorites = async () => {

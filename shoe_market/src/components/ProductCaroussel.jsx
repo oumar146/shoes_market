@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useFavorites } from "../context/FavoritesContext";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
+const ProductCaroussel = ({ products, title }) => {
+  const { favorites, toggleFavorite } = useFavorites();
+  const navigate = useNavigate();
 
-// import MoviesModal from "./MovieModal";
-// import "../styles/moviesCarousel.css";
-
-const ProductCaroussel = ({products, title}) => {
-//   const { openMovieModal, closeMovieModal } = useModal();
-  const [modalShow, setModalShow] = useState(false);
-
+  const { user } = useContext(UserContext);
 
   const settings = {
     infinite: true,
@@ -44,13 +46,8 @@ const ProductCaroussel = ({products, title}) => {
     ],
   };
 
-  const openModal = (movie) => {
-    setModalShow(true);
-  };
 
-  const closeModal = () => {
-    setModalShow(false);
-  };
+ 
 
   return (
     <div className="carousel-container">
@@ -64,31 +61,37 @@ const ProductCaroussel = ({products, title}) => {
                   <div
                     key={product.product_id}
                     className="product-card"
-                    onClick={() => openModal(product)}
                   >
+                    <div className="">
+                      {favorites.includes(product.product_id) ? (
+                        <FavoriteIcon
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(product.product_id);
+                          }}
+                        />
+                      ) : (
+                        <FavoriteBorderIcon
+                          onClick={(e) => {
+                            if (!user) navigate("/login");
+                            e.stopPropagation();
+                            toggleFavorite(product.product_id);
+                          }}
+                        />
+                      )}
+                    </div>
                     <img
                       src={product.image_url}
                       alt={product.image_url}
                       title={product.product_name}
                     />
-                    <p className="product-title">
-                      {product.product_name}
-                    </p>
+                    <p className="product-title">{product.product_name}</p>
                   </div>
                 )
             )}
           </Slider>
         </div>
       )}
-
-      {/* Modal */}
-      {/* {modalShow && movieDetails && (
-        <MoviesModal
-          closeModal={closeModal}
-          movieDetails={movieDetails}
-          modalShow={modalShow}
-        />
-      )} */}
     </div>
   );
 };

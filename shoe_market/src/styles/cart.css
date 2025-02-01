@@ -54,7 +54,11 @@
     margin-right: 5vh;
     margin-bottom: 5vh;
 }
-
+.cart-total button{
+    margin-top: 5vh;
+    color: white;
+    padding: 2vh 10vh;
+}
 /* Media query pour les écrans mobiles */
 @media (max-width: 768px) {
     .cart-item {
@@ -79,5 +83,8 @@
         right: 0;
         padding: 2vh;
 
+    }
+    .cart-total button{
+     width: 95%;
     }
 }
