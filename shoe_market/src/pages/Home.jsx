@@ -56,7 +56,9 @@ const Home = () => {
   return (
     <div className="home-container">
       <Header />
-      <img src={banniere} alt="bannière" className="home-banner" />
+      <div className="banner-container">
+        <img src={banniere} alt="bannière" className="home-banner" />
+      </div>
 
       {/* Afficher un carrousel pour chaque catégorie */}
       <div className="carousels-container">

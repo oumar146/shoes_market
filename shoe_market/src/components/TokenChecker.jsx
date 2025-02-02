@@ -20,14 +20,11 @@ const TokenChecker = () => {
     }
 
     try {
-      const response = await axios.get(
-        `${config.apiUrl}/user/token-check`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.get(`${config.apiUrl}/user/token-check`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       if (response.data.newToken) {
         localStorage.setItem("token", response.data.newToken);
@@ -44,7 +41,7 @@ const TokenChecker = () => {
   // Vérification du token lors du chargement de la route protégée
   useEffect(() => {
     const checkToken = async () => {
-     checkTokenValidity();
+      checkTokenValidity();
       // if (!isValid) {
       //   console.log("Le token est invalide, affichage du modal.");
       // } else {
@@ -52,7 +49,7 @@ const TokenChecker = () => {
       // }
     };
 
-    checkToken(); 
+    checkToken();
   }, [navigate, updateUser]);
 
   // Gestion des redirections lorsque la session expire
@@ -77,12 +74,18 @@ const TokenChecker = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1040,
+            color: "white",
           }}
         >
-          <Modal.Dialog style={{ margin: "auto", marginTop: "15%" }}>
-            <Modal.Header>
+          <Modal.Dialog
+            style={{
+              margin: "auto",
+              marginTop: "15%",
+              backgroundColor: "white",
+            }}
+          >
+            <Modal.Header >
               <Modal.Title>Session Expirée</Modal.Title>
             </Modal.Header>
 
@@ -91,10 +94,16 @@ const TokenChecker = () => {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button  onClick={handleRedirectHome}>
+              <Button
+                style={{ outline: "none", border: "1px solid white" }}
+                onClick={handleRedirectHome}
+              >
                 Accueil
               </Button>
-              <Button onClick={handleRedirectLogin}>
+              <Button
+                style={{ outline: "none", border: "1px solid white" }}
+                onClick={handleRedirectLogin}
+              >
                 Se connecter
               </Button>
             </Modal.Footer>
