@@ -108,13 +108,3 @@ justify-content: space-between;
 .offer-details {
   position: relative;
 }
-
-.add-to-cart-btn {
-  opacity: 1; 
-  transition: opacity 0.3s ease; 
-  position: absolute; 
-}
-
-.offer-details:hover .add-to-cart-btn {
-  
-}

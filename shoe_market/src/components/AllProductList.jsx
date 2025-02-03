@@ -3,7 +3,7 @@ import { Card, CardHeader } from "react-bootstrap";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useFavorites } from "../context/FavoritesContext";
-import AddIcon from "@mui/icons-material/Add";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ProductModal from "./ProductModal";
 import "../styles/allProductList.css";
 
@@ -79,17 +79,18 @@ const AllProductList = ({ input, filters, products, error = false }) => {
                   style={{
                     width: "18rem",
                     margin: "0rem 1rem",
-                    cursor: "pointer",
                   }}
                 >
-                  <CardHeader>
-                    <AddIcon
+                  <CardHeader style={{border:"none"}}>
+                    <AddShoppingCartIcon
+                    style={{cursor:"pointer"}}
                       onClick={() => {
                         handleCardClick(product);
                       }}
                     />
                     {favorites.includes(product.product_id) ? (
                       <FavoriteIcon
+                      style={{cursor:"pointer"}}
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleFavorite(product.product_id);
@@ -97,6 +98,7 @@ const AllProductList = ({ input, filters, products, error = false }) => {
                       />
                     ) : (
                       <FavoriteBorderIcon
+                      style={{cursor:"pointer"}}
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleFavorite(product.product_id);
@@ -106,7 +108,6 @@ const AllProductList = ({ input, filters, products, error = false }) => {
                   </CardHeader>
                   <Card.Img variant="top" src={product.image_url} />
                   <Card.Body className="offer-details">
-
                       <Card.Text>
                         <span>{product.product_name}</span>
                         <span className="price">{product.price}€</span>
