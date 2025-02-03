@@ -106,7 +106,7 @@ const Cart = () => {
                     <ClearIcon
                       style={{ cursor: "pointer" }}
                       onClick={() => {
-                        removeFromCart(item.id);
+                        removeFromCart(item.product_id);
                       }}
                     />
                   </div>

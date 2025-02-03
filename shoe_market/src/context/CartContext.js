@@ -63,6 +63,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = async (CartId) => {
+    
     if (!user) return;
     console.log(CartId)
 

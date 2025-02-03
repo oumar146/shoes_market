@@ -1,19 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Modal, Button, Form, InputGroup } from "react-bootstrap";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { useCart } from "../context/CartContext";
 import config from "../config";
 import axios from "axios";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import "../styles/productModal.css";
-
 
 const ProductModal = ({ show, setShow, onHide, productDetails }) => {
   const navigate = useNavigate();
@@ -104,7 +103,7 @@ const ProductModal = ({ show, setShow, onHide, productDetails }) => {
         dialogClassName="custom-modal-dialog"
       >
         <Modal.Header closeButton>
-          <Modal.Title>{productDetails?.name || "Produit"}</Modal.Title>
+          <Modal.Title>{productDetails?.product_name || "Produit"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="modal-content-container">
@@ -140,7 +139,10 @@ const ProductModal = ({ show, setShow, onHide, productDetails }) => {
           </div>
 
           {/* Sélecteur de taille avec InputLabel et FormHelperText */}
-          <FormControl sx={{ margin: "10px 0px", minWidth: '100%' }} error={sizeError}>
+          <FormControl
+            sx={{ margin: "10px 0px", minWidth: "100%" }}
+            error={sizeError}
+          >
             <InputLabel id="demo-simple-select-helper-label">Taille</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
@@ -169,17 +171,46 @@ const ProductModal = ({ show, setShow, onHide, productDetails }) => {
           <Form.Group controlId="quantity">
             <Form.Label>Quantité :</Form.Label>
             <InputGroup>
-              <Button variant="outline-secondary" onClick={decreaseQuantity}>
-                <RemoveCircleOutlineIcon />
+              <Button
+                className="btn"
+                variant="outline-secondary"
+                onClick={decreaseQuantity}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "50%",
+                  width: "60px",
+                  height: "60px",
+                  padding: "0",
+                  minWidth: "unset",
+                }}
+              >
+                <RemoveIcon />
               </Button>
               <Form.Control
                 type="number"
                 value={quantity}
                 onChange={handleQuantityChange}
                 min="1"
+                style={{ border: "none", textAlign: "center" }}
               />
-              <Button variant="outline-secondary" onClick={increaseQuantity}>
-                <AddCircleIcon onClick={increaseQuantity} />
+              <Button
+                className="btn"
+                variant="outline-secondary"
+                onClick={increaseQuantity}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "50%",
+                  width: "60px",
+                  height: "60px",
+                  padding: "0",
+                  minWidth: "unset",
+                }}
+              >
+                <AddIcon onClick={increaseQuantity} />
               </Button>
             </InputGroup>
           </Form.Group>
@@ -191,7 +222,7 @@ const ProductModal = ({ show, setShow, onHide, productDetails }) => {
         </Modal.Body>
         <Modal.Footer>
           <Button
-          variant="none"
+            variant="none"
             className="btn-style"
             onClick={() => {
               handleAddToCart(user, productDetails.product_id, quantity);

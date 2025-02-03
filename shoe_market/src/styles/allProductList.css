@@ -3,6 +3,8 @@
   flex-direction: column;
   align-items: center;
   align-items: self-start;
+  gap: 1vh;
+  margin: 2vh 0vh;
 }
 
 .offer-details .card-text {
