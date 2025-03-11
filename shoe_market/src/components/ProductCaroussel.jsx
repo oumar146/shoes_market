@@ -65,6 +65,7 @@ const ProductCaroussel = ({ products, title }) => {
                     <div className="">
                       {favorites.includes(product.product_id) ? (
                         <FavoriteIcon
+                        style={{cursor:"pointer"}}
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleFavorite(product.product_id);
@@ -72,6 +73,7 @@ const ProductCaroussel = ({ products, title }) => {
                         />
                       ) : (
                         <FavoriteBorderIcon
+                        style={{cursor:"pointer"}}
                           onClick={(e) => {
                             if (!user) navigate("/login");
                             e.stopPropagation();
@@ -85,7 +87,8 @@ const ProductCaroussel = ({ products, title }) => {
                       alt={product.image_url}
                       title={product.product_name}
                     />
-                    <p className="product-title">{product.product_name}</p>
+                    <p className="product-info-card">{product.product_name}<br/>
+                    {product.price} €</p>
                   </div>
                 )
             )}

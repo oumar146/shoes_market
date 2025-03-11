@@ -3,7 +3,7 @@ import { Card, CardHeader } from "react-bootstrap";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useFavorites } from "../context/FavoritesContext";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddIcon from "@mui/icons-material/Add";
 import ProductModal from "./ProductModal";
 import "../styles/allProductList.css";
 
@@ -75,6 +75,7 @@ const AllProductList = ({ input, filters, products, error = false }) => {
         productFilter.map((product) => (
             <Box key={product.reference} sx={{ display: "flex" }}>
               <Zoom in={true}>
+                <div>
                 <Card
                   style={{
                     width: "18rem",
@@ -82,7 +83,7 @@ const AllProductList = ({ input, filters, products, error = false }) => {
                   }}
                 >
                   <CardHeader style={{border:"none"}}>
-                    <AddShoppingCartIcon
+                    <AddIcon
                     style={{cursor:"pointer"}}
                       onClick={() => {
                         handleCardClick(product);
@@ -107,14 +108,12 @@ const AllProductList = ({ input, filters, products, error = false }) => {
                     )}
                   </CardHeader>
                   <Card.Img variant="top" src={product.image_url} />
-                  <Card.Body className="offer-details">
-                      <Card.Text>
-                        <span>{product.product_name}</span>
-                        <span className="price">{product.price}€</span>
-                      </Card.Text>
-                  </Card.Body>
                 </Card>
+                <p className="product-info-card">{product.product_name}<br/>
+                {product.price} €</p>
+                </div>
               </Zoom>
+              
           </Box>
         ))
       ) : (

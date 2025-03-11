@@ -10,6 +10,13 @@ body {
   font-family: inherit;
 }
 
+.product-info-card{
+  margin-top: 2px;
+  font-family: Arial, sans-serif;
+  color: #4b4a4a;
+  text-align: center;
+
+}
 .error {
   color: rgb(235, 80, 80);
 }

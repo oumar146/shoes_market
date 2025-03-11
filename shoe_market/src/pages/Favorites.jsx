@@ -13,6 +13,7 @@ import config from "../config";
 import { UserContext } from "../context/UserContext";
 import SentimentDissatisfiedIcon from "@mui/icons-material/SentimentDissatisfied";
 import ProductModal from "../components/ProductModal";
+
 const Favorites = () => {
   const { favorites, toggleFavorite } = useFavorites();
   const { user } = useContext(UserContext);
@@ -67,43 +68,50 @@ const Favorites = () => {
           filteredProducts.map((product) => (
             <Box key={product.product_id} sx={{ display: "flex" }}>
               <Zoom in={true}>
-                <Card
-                  style={{
-                    width: "18rem",
-                    margin: "0rem 1rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  <CardHeader>
-                    <AddIcon
-                      onClick={() => {
-                        handleCardClick(product);
-                      }}
-                    />
-                    {favorites.includes(product.product_id) ? (
-                      <FavoriteIcon
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleFavorite(product.product_id);
+                <div>
+                  <Card
+                    style={{
+                      width: "18rem",
+                      margin: "0rem 1rem",
+                    }}
+                  >
+                    <CardHeader>
+                      <AddIcon
+                                            style={{cursor:"pointer"}}
+
+                        onClick={() => {
+                          handleCardClick(product);
                         }}
                       />
-                    ) : (
-                      <FavoriteBorderIcon
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleFavorite(product.product_id);
-                        }}
-                      />
-                    )}
-                  </CardHeader>
-                  <Card.Img variant="top" src={product.image_url} />
-                  <Card.Body className="offer-details">
-                    <Card.Text>
-                      <span>{product.product_name}</span>
-                      <span className="price">{product.price}€</span>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
+                      {favorites.includes(product.product_id) ? (
+                    
+                        <FavoriteIcon
+                        style={{cursor:"pointer"}}
+
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(product.product_id);
+                          }}
+                        />
+                      ) : (
+                        <FavoriteBorderIcon
+                        style={{cursor:"pointer"}}
+
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleFavorite(product.product_id);
+                          }}
+                        />
+                      )}
+                    </CardHeader>
+                    <Card.Img variant="top" src={product.image_url} />
+                  </Card>
+                  <p className="product-info-card">
+                    {product.product_name}
+                    <br />
+                    {product.price} €
+                  </p>
+                </div>
               </Zoom>
             </Box>
           ))
