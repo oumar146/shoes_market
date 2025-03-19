@@ -36,10 +36,10 @@ const Details = ({ product }) => {
                   <label>Description:</label>
                   <textarea value={product.description} disabled />
                 </div>
-                <div>
-                  <label>{"Taille (EU):"}</label>
+                {/* <div>
+                  <label>{"Taille (EUdss):"}</label>
                   <input type="text" value={product.size} disabled />
-                </div>
+                </div> */}
                 <div>
                   <label>Prix:</label>
                   <input

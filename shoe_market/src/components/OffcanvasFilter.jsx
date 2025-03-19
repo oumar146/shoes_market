@@ -168,18 +168,6 @@ const OffcanvasFilter = ({ filters, setFilters }) => {
               />
             </div>
 
-            {/* Date */}
-            <div>
-              <label htmlFor="date">Date (après) :</label>
-              <input
-                type="date"
-                name="date"
-                id="date"
-                value={localFilters.date || ""}
-                onChange={handleChange}
-              />
-            </div>
-
             {/* Boutons */}
             <div className="filter-buttons">
               <button type="button" onClick={applyFilters}>

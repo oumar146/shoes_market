@@ -122,10 +122,6 @@ const ProductModal = ({ show, setShow, onHide, productDetails }) => {
             {/* Infos à droite */}
             <div className="product-info">
               <p>
-                <strong>Taille (EU) :</strong>{" "}
-                {productDetails?.size || "Non spécifiée"}
-              </p>
-              <p>
                 <strong>Prix :</strong>{" "}
                 {productDetails?.price
                   ? `${productDetails.price} €`
