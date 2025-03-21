@@ -164,15 +164,15 @@ const Header = () => {
           </NavLink>
 
           {/* Dropdown pour le compte utilisateur */}
-          <Menu as="div" className="relative hidden lg:inline-block">
+          <Menu as="div" className="relative hidden lg:inline-block z-100">
             <MenuButton className="inline-flex items-center text-md font-semibold text-gray-700">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
+                stroke="grey"
+                className="size-7 mt-1"
               >
                 <path
                   strokeLinecap="round"
@@ -194,23 +194,43 @@ const Header = () => {
                     </NavLink>
                   </MenuItem>
                   <MenuItem>
+                    <a
+                      href="https://oumar146.github.io/shoes_market_dashboard/"
+                      target="__blank"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Espace administrateur
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden lg:flex"
                     >
                       Se déconnecter
                     </button>
                   </MenuItem>
                 </>
               ) : (
-                <MenuItem>
-                  <NavLink
-                    to="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Se connecter
-                  </NavLink>
-                </MenuItem>
+                <div>
+                  <MenuItem>
+                    <a
+                      href="https://oumar146.github.io/shoes_market_dashboard/"
+                      target="__blank"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Espace administrateur
+                    </a>
+                  </MenuItem>
+                  <MenuItem>
+                    <NavLink
+                      to="/login"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Se connecter
+                    </NavLink>
+                  </MenuItem>
+                </div>
               )}
             </MenuItems>
           </Menu>
@@ -219,7 +239,7 @@ const Header = () => {
           {user ? (
             <button
               onClick={handleLogout}
-              className="text-md font-semibold text-gray-700 lg:hidden"
+              className="text-md font-semibold text-gray-700  hidden lg:flex"
             >
               Se déconnecter
             </button>
@@ -287,6 +307,14 @@ const Header = () => {
                 >
                   Mes commandes
                 </NavLink>
+                    <a
+                      href="https://oumar146.github.io/shoes_market_dashboard/"
+                      target="__blank"
+                      className="block text-md font-semibold text-gray-700"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Espace administrateur
+                    </a>
                 <button
                   onClick={() => {
                     handleLogout();

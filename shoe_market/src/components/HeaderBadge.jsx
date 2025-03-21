@@ -8,7 +8,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     right: -2,
     top: 2,
     border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
     color: 'white', 
     backgroundColor: 'black'
   },
@@ -17,7 +16,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function HeaderBadge(props) {
   return (
-    <IconButton aria-label="cart">
+    <IconButton aria-label="cart" className="p-0 m-0">
       <StyledBadge badgeContent={props.number} color="primary">
         {props.children}
       </StyledBadge>

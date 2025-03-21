@@ -14,6 +14,7 @@ import Women from "./pages/Women";
 import Unisex from "./pages/Unisex";
 import Favorites from "./pages/Favorites";
 import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 // Import de ProtectedRoute
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -28,6 +29,7 @@ const routes = [
   { path: "/product/unisex", element: <Unisex /> },
   { path: "/cart", element: <Cart /> },
   { path: "/favorites", element: <Favorites /> },
+  { path: "/orders", element: <Orders /> },
 
   { path: "/#/", element: <Home /> },
   { path: "/#/home", element: <Home /> },
@@ -38,6 +40,7 @@ const routes = [
   { path: "#/product/unisex", element: <Unisex /> },
   { path: "#/cart", element: <Cart /> },
   { path: "#/favorites", element: <Favorites /> },
+  { path: "#/orders", element: <Orders /> },
 ];
 
 const Router = () => {
