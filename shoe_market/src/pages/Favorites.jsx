@@ -50,7 +50,12 @@ const Favorites = () => {
 
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        border: "none",
+      }}
     >
       {" "}
       <Header />
@@ -75,19 +80,16 @@ const Favorites = () => {
                       margin: "0rem 1rem",
                     }}
                   >
-                    <CardHeader>
+                    <CardHeader className="custom-card-header">
                       <AddIcon
-                                            style={{cursor:"pointer"}}
-
+                        style={{ cursor: "pointer" }}
                         onClick={() => {
                           handleCardClick(product);
                         }}
                       />
                       {favorites.includes(product.product_id) ? (
-                    
                         <FavoriteIcon
-                        style={{cursor:"pointer"}}
-
+                          style={{ cursor: "pointer" }}
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleFavorite(product.product_id);
@@ -95,8 +97,7 @@ const Favorites = () => {
                         />
                       ) : (
                         <FavoriteBorderIcon
-                        style={{cursor:"pointer"}}
-
+                          style={{ cursor: "pointer" }}
                           onClick={(e) => {
                             e.stopPropagation();
                             toggleFavorite(product.product_id);
@@ -104,7 +105,11 @@ const Favorites = () => {
                         />
                       )}
                     </CardHeader>
-                    <Card.Img variant="top" src={product.image_url} />
+                    <Card.Img
+                      variant="top"
+                      src={product.image_url}
+                      style={{ border: "none" }}
+                    />
                   </Card>
                   <p className="product-info-card">
                     {product.product_name}

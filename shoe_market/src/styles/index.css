@@ -1,7 +1,9 @@
 html {
   scroll-behavior: smooth;
 }
-
+.custom-card-header {
+  border: none !important;
+}
 body {
   margin: 0;
   padding: 0;
