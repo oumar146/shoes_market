@@ -66,7 +66,6 @@ const Login = () => {
               type="email"
               id="yourEmail"
               value={email}
-              placeholder="tets"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
