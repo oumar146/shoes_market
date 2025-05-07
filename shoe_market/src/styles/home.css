@@ -82,8 +82,16 @@
   
   .carousel-title {
     margin-left: 2vh;
-    margin: 5vh 2vh;
-    font-size: 4vh;
+    margin: 8vh 2vh;
+      color: black;
+      text-align: center;
+      font-family: "Anton", sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 5vh;
+      transition: opacity 350ms, transform 350ms;
+      line-height: initial;
+      opacity: 1;
   }
   
   /* Responsive  */

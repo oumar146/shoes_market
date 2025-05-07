@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Slider from "react-slick";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -6,9 +6,13 @@ import { useFavorites } from "../context/FavoritesContext";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import AddIcon from "@mui/icons-material/Add";
+import ProductModal from "./ProductModal";
 import { Card, CardHeader } from "react-bootstrap"; // Import des composants Card et CardHeader
 
 const ProductCaroussel = ({ products, title }) => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const { favorites, toggleFavorite } = useFavorites();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
@@ -55,11 +59,27 @@ const ProductCaroussel = ({ products, title }) => {
     ],
   };
 
+  const handleCloseModal = () => setShowModal(false);
+  const handleCardClick = (product) => {
+    setSelectedProduct(product);
+    setShowModal(true);
+  };
+
   return (
     <div className="carousel-container">
+      {selectedProduct && (
+        <ProductModal
+          show={showModal}
+          setShow={setShowModal}
+          onHide={handleCloseModal}
+          productDetails={selectedProduct}
+        />
+      )}
       {products.length > 0 && (
         <div>
-          {title && <h4 className="carousel-title">{title}</h4>}
+          <div style={{ position: 'relative', width: '100%' }}>
+            {title && <h4 className="carousel-title">{title}</h4>}
+          </div>
           <Slider {...settings} className="carousel custom-carousel">
             {products.map(
               (product) =>
@@ -87,7 +107,8 @@ const ProductCaroussel = ({ products, title }) => {
                           style={{ cursor: "pointer" }}
                           onClick={(e) => {
                             e.stopPropagation();
-                            handleAddClick(product);
+                            handleCardClick(product);
+                            (product);
                           }}
                         />
                         {/* Icônes de favoris */}

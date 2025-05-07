@@ -28,8 +28,8 @@ const login = async (email, password, setError, updateUser) => {
 };
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("invité1@gmail.com");
+  const [password, setPassword] = useState("1234");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { updateUser } = useContext(UserContext); // Utilisation du contexte
@@ -66,6 +66,7 @@ const Login = () => {
               type="email"
               id="yourEmail"
               value={email}
+              placeholder="tets"
               required
               onChange={(e) => setEmail(e.target.value)}
             />
