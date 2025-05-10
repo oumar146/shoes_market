@@ -52,6 +52,7 @@ const Cart = () => {
       const response = await axios.post(`${config.apiUrl}/order/new`, { orders });
       orders.map((order)=>{
       removeFromCart(order.product_id);
+      return null;
 
       })
       if (response.data.success) {

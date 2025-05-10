@@ -29,7 +29,7 @@ const Orders = () => {
     // Filtrer les commandes pour l'utilisateur actuel
     const userOrders = orders.filter((o) => o.user_email === user.email);
     setOrders(userOrders);
-  }, [user]);
+  }, [user, orders]);
 
   // Regrouper les commandes par référence
   const groupedOrders = orders.reduce((acc, order) => {
