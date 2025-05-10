@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Slider from "react-slick";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -16,14 +16,6 @@ const ProductCaroussel = ({ products, title }) => {
   const { favorites, toggleFavorite } = useFavorites();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-
-  // Fonction pour gérer le clic sur l'icône AddIcon
-  const handleAddClick = (product) => {
-    // Vous pouvez implémenter une action ici, comme ouvrir un modal ou naviguer
-    console.log("AddIcon clicked for product:", product);
-    // Exemple : ouvrir un modal ou naviguer vers une autre page
-    // navigate(`/product/${product.product_id}`);
-  };
 
   const settings = {
     infinite: true,
@@ -108,7 +100,6 @@ const ProductCaroussel = ({ products, title }) => {
                           onClick={(e) => {
                             e.stopPropagation();
                             handleCardClick(product);
-                            (product);
                           }}
                         />
                         {/* Icônes de favoris */}
