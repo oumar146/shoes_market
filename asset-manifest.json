@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/shoes_market/static/css/main.eaa58d7e.css",
+    "main.js": "/shoes_market/static/js/main.26635618.js",
+    "static/media/banniere.jpg": "/shoes_market/static/media/banniere.03657be8efb971c7c0f7.jpg",
+    "index.html": "/shoes_market/index.html",
+    "main.eaa58d7e.css.map": "/shoes_market/static/css/main.eaa58d7e.css.map",
+    "main.26635618.js.map": "/shoes_market/static/js/main.26635618.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eaa58d7e.css",
+    "static/js/main.26635618.js"
+  ]
+}
